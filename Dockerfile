@@ -1,6 +1,6 @@
 #build docker image of java application
-FROM  openjdk
+FROM  docker.io/library/openjdk:latest
 COPY  . /usr/src/java_app
 WORKDIR /usr/src/java_app
-RUN  ["sh", "./build.sh"]
-ENTRYPOINT ["sh", "./run.sh"]
+RUN  ["/bin/bash", "./build.sh"]
+ENTRYPOINT ["/bin/bash", "./run.sh"]
