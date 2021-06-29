@@ -1,5 +1,5 @@
 #build docker image of java application
-FROM  openjdk:11
+FROM  openjdk
 COPY  . /usr/src/java_app
 WORKDIR /usr/src/java_app
 RUN  ["sh", "./build.sh"]
