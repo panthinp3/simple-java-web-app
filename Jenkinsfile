@@ -31,8 +31,8 @@ checkout([$class: 'GitSCM', branches: [[name: '/main']], extensions: [], userRem
         steps{
            
            withCredentials([usernameColonPassword(credentialsId: 'docker', variable: 'docker')]) {
-            sh 'docker push panthinp3/java_web:v1'
-            sh 'docker push panthinp3/java_web:$BUILD_NUMBER'
+            sh 'docker push java_app:v1'
+            sh 'docker push java_app:$BUILD_NUMBER'
          }
    /*       withDockerRegistry([credentialsId: "docker", url: ""]){
             sh 'docker push panthinp3/java_web:v1'
