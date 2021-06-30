@@ -29,10 +29,15 @@ checkout([$class: 'GitSCM', branches: [[name: '/main']], extensions: [], userRem
    
    stage('Deploy our image') {
         steps{
-          withDockerRegistry([credentialsId: "docker", url: ""]){
+           
+           withCredentials([usernameColonPassword(credentialsId: 'docker', variable: 'docker')]) {
             sh 'docker push panthinp3/java_web:v1'
             sh 'docker push panthinp3/java_web:$BUILD_NUMBER'
-    }
+         }
+   /*       withDockerRegistry([credentialsId: "docker", url: ""]){
+            sh 'docker push panthinp3/java_web:v1'
+            sh 'docker push panthinp3/java_web:$BUILD_NUMBER'
+    }*/
   }      
 }
    
