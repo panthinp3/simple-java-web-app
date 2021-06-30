@@ -1,13 +1,13 @@
 pipeline {
 agent any 
 stages {
-stage ('git checkout') {
+/*stage ('git checkout') {
 steps {
-checkout([$class: 'GitSCM', branches: [[name: '*/main']], extensions: [], userRemoteConfigs: [[url: 'https://github.com/astin2044327/sample-javaapp.git']]])
+checkout([$class: 'GitSCM', branches: [[name: '*///main']], extensions: [], userRemoteConfigs: [[url: 'https://github.com/astin2044327/sample-javaapp.git']]])
 
    }
    }
-   
+   */
    
    stage ('docker build') {
    steps {
