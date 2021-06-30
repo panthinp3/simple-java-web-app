@@ -18,14 +18,23 @@ checkout([$class: 'GitSCM', branches: [[name: '/main']], extensions: [], userRem
    }
    }
    
-   stage ('docker run') {
+  /* stage ('docker run') {
    steps {
     
    sh 'docker run -it --name my-running-app Helloworld'
    
    
    }
-   }
+   } */
+   
+   stage('Deploy our image') {
+        steps{
+          withDockerRegistry([credentialsId: "docker", url: ""]){
+            sh 'docker push panthinp3/java_web:v1'
+            sh 'docker push panthinp3/java_web:$BUILD_NUMBER'
+    }
+  }      
+}
    
    
    
