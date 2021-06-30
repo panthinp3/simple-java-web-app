@@ -2,5 +2,5 @@
 FROM  docker.io/library/openjdk:latest
 COPY  . /usr/src/java_app
 WORKDIR /usr/src/java_app
-RUN  ["/bin/bash", "./build.sh"]
-ENTRYPOINT ["/bin/bash", "./run.sh"]
+RUN  ["bash", "./build.sh"]
+ENTRYPOINT ["bash", "./run.sh"]
