@@ -1,13 +1,20 @@
+/*Install docker pipeline plugin
+Add docker credentials 
+generate scripts for 'with docker registry' and provide url as ' '
+   
+Inside build step:
+build docker giving a name and version: latest
+tag the docker image with docker repo name and version as latest
+tag the docker image with docker repo name and $BUILD_NUMBER
+
+Inside deploy step:
+   push the image to hub using repo name and version as latest
+   push the image to hub using repo name and $BUILD_NUMBER */
+
+
 pipeline {
 agent any 
 stages {
-/*stage ('git checkout') {
-steps {
-checkout([$class: 'GitSCM', branches: [[name: '/main']], extensions: [], userRemoteConfigs: [[url: 'https://github.com/astin2044327/sample-javaapp.git']]])
-
-   }
-   }
-   */
    
    stage ('docker build') {
    steps {
