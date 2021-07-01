@@ -32,20 +32,21 @@ checkout([$class: 'GitSCM', branches: [[name: '/main']], extensions: [], userRem
    stage('Deploy our image') {
         steps{
            
-           withCredentials([usernameColonPassword(credentialsId: 'docker', variable: 'docker')]) {
+         /*  withCredentials([usernameColonPassword(credentialsId: 'docker', variable: 'docker')]) {
             sh 'docker push panthinp3/java_web:latest'
             sh 'docker push panthinp3/java_web:$BUILD_NUMBER'
-         }
-   /*       withDockerRegistry([credentialsId: "docker", url: ""]){
-            sh 'docker push panthinp3/java_web:v1'
-            sh 'docker push panthinp3/java_web:$BUILD_NUMBER'
-    }*/
-  }      
-}
+         }*/
+         withDockerRegistry(credentialsId: 'docker', url: 'https://hub.docker.com/repository/docker/panthinp3/java_web') {
+               sh 'docker push panthinp3/java_web:latest'
+               sh 'docker push panthinp3/java_web:$BUILD_NUMBER'
+    
+            }
+         }      
+      }
    
    
    
    
    }
-   }
+ }
    
