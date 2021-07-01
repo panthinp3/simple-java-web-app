@@ -12,7 +12,9 @@ checkout([$class: 'GitSCM', branches: [[name: '/main']], extensions: [], userRem
    stage ('docker build') {
    steps {
     
-   sh 'docker build -t panthinp3/java_web:v1 .'
+   sh 'docker build -t java_web:v1 .'
+   sh 'docker tag java_web panthinp3/java_web:v1'
+   sh 'docker tag java_web panthinp3/java_web:$BUILD_NUMBER'
    
    
    }
