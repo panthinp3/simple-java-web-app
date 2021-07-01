@@ -36,7 +36,7 @@ checkout([$class: 'GitSCM', branches: [[name: '/main']], extensions: [], userRem
             sh 'docker push panthinp3/java_web:latest'
             sh 'docker push panthinp3/java_web:$BUILD_NUMBER'
          }*/
-         withDockerRegistry(credentialsId: 'docker', url: 'https://hub.docker.com/repository/docker/panthinp3/java_web') {
+         withDockerRegistry(credentialsId: 'docker', url: '') {
                sh 'docker push panthinp3/java_web:latest'
                sh 'docker push panthinp3/java_web:$BUILD_NUMBER'
     
